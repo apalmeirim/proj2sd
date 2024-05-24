@@ -1,5 +1,7 @@
 package tukano.impl.rest.servers;
 
+import java.net.UnknownHostException;
+import java.security.NoSuchAlgorithmException;
 import java.util.logging.Logger;
 
 import org.glassfish.jersey.server.ResourceConfig;
@@ -27,7 +29,7 @@ public class RestBlobsServer extends AbstractRestServer {
 		config.register(new CustomLoggingFilter());
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws NoSuchAlgorithmException {
 		Args.use(args);
 		new RestBlobsServer(Args.valueOf("-port", PORT)).start();
 	}	

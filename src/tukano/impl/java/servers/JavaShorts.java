@@ -14,6 +14,7 @@ import static tukano.impl.java.clients.Clients.BlobsClients;
 import static tukano.impl.java.clients.Clients.UsersClients;
 import static utils.DB.getOne;
 
+import java.net.URI;
 import java.time.Duration;
 import java.util.List;
 import java.util.Map;
@@ -40,6 +41,8 @@ public class JavaShorts implements ExtendedShorts {
 	private static final String BLOB_COUNT = "*";
 
 	private static Logger Log = Logger.getLogger(JavaShorts.class.getName());
+
+	Discovery discovery = Discovery.getInstance();
 
 	AtomicLong counter = new AtomicLong( totalShortsInDatabase() );
 	
@@ -101,14 +104,23 @@ public class JavaShorts implements ExtendedShorts {
 		Log.info(() -> format("createShort : userId = %s, pwd = %s\n", userId, password));
 
 		return errorOrResult( okUser(userId, password), user -> {
-			
+
 			var shortId = format("%s-%d", userId, counter.incrementAndGet());
-			var blobUrl = format("%s/%s/%s", getLeastLoadedBlobServerURI(), Blobs.NAME, shortId); 
-			var shrt = new Short(shortId, userId, blobUrl);
+
+			var servers = getLeastLoadedBlobServerURI().split("\\|");
+
+			StringBuilder blobUrl = new StringBuilder(format("%s/%s/%s", servers[0], Blobs.NAME, shortId));
+
+			for(int i = 1; i < servers.length; i++) {
+				blobUrl.append("|");
+				blobUrl.append(format("%s/%s/%s", servers[i], Blobs.NAME, shortId));
+			}
+			var shrt = new Short(shortId, userId, blobUrl.toString());
 
 			return DB.insertOne(shrt);
 		});
 	}
+
 
 	@Override
 	public Result<Short> getShort(String shortId) {
@@ -120,7 +132,26 @@ public class JavaShorts implements ExtendedShorts {
 		return shortFromCache(shortId);
 	}
 
-	
+
+	public void alterBlobURL(URI[] onlineServers, String shortId) {
+		if (onlineServers.length > 0) {
+
+			StringBuilder st = new StringBuilder(format("%s/%s/%s", onlineServers[0].toString(), Blobs.NAME, shortId));
+
+			for (int i = 1; i < onlineServers.length; i++) {
+				if(!(onlineServers[i] == null)) {
+					st.append("|");
+					st.append(format("%s/%s/%s", onlineServers[i].toString(), Blobs.NAME, shortId));
+				}
+			}
+
+			if(shortFromCache(shortId).isOK()) {
+				Short s = shortFromCache(shortId).value();
+				s.setBlobUrl(st.toString());
+			}
+		}
+	}
+
 	@Override
 	public Result<Void> deleteShort(String shortId, String password) {
 		Log.info(() -> format("deleteShort : shortId = %s, pwd = %s\n", shortId, password));
@@ -296,6 +327,7 @@ public class JavaShorts implements ExtendedShorts {
 		var hits = DB.sql("SELECT count('*') FROM Short", Long.class);
 		return 1L + (hits.isEmpty() ? 0L : hits.get(0));
 	}
+
 
 	
 	

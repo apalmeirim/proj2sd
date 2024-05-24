@@ -1,18 +1,18 @@
 package tukano.impl.discovery;
 
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.MulticastSocket;
-import java.net.NetworkInterface;
-import java.net.URI;
-import java.util.Collections;
-import java.util.Map;
-import java.util.Set;
+import java.net.*;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import tukano.impl.java.clients.Clients;
+import tukano.impl.java.servers.JavaShorts;
 import utils.Sleep;
 
 /**
@@ -45,6 +45,7 @@ public interface Discovery {
 	public static Discovery getInstance() {
 		return DiscoveryImpl.getInstance();
 	}
+
 }
 
 /**
@@ -56,6 +57,8 @@ class DiscoveryImpl implements Discovery {
 
 	static final int DISCOVERY_RETRY_TIMEOUT = 5000;
 	static final int DISCOVERY_ANNOUNCE_PERIOD = 1000;
+
+	static final int SERVER_TIMEOUT_PERIOD = 0; // 15 seconds
 	static final InetSocketAddress DISCOVERY_ADDR = new InetSocketAddress("226.226.226.226", 2266);
 
 	// Used separate the two fields that make up a service announcement.
@@ -65,8 +68,8 @@ class DiscoveryImpl implements Discovery {
 
 	private static Discovery singleton;
 
-	private Map<String, Set<URI>> uris = new ConcurrentHashMap<>();
-	
+	private Map<String, LoadingCache<URI, URI>> uris = new ConcurrentHashMap<>();
+
 	synchronized static Discovery getInstance() {
 		if (singleton == null) {
 			singleton = new DiscoveryImpl();
@@ -102,18 +105,25 @@ class DiscoveryImpl implements Discovery {
 		}).start();
 	}
 
-
 	@Override
 	public URI[] knownUrisOf(String serviceName, int minEntries) {
-		while(true) {
-			var res = uris.getOrDefault(serviceName, Collections.emptySet());
-			if( res.size() >= minEntries )
-				return res.toArray( new URI[res.size()]);
+		while (true) {
+			var res = uris.getOrDefault(serviceName, CacheBuilder.newBuilder()
+					.expireAfterWrite(DISCOVERY_ANNOUNCE_PERIOD + 100, TimeUnit.MILLISECONDS) // Adjusted expiration time
+					.build(new CacheLoader<URI, URI>() {
+						@Override
+						public URI load(URI key) throws Exception {
+							return key;
+						}
+					}));
+
+			if (res.size() >= minEntries)
+				return res.asMap().keySet().toArray(new URI[(int) res.size()]);
 			else
 				Sleep.ms(DISCOVERY_ANNOUNCE_PERIOD);
-				
 		}
 	}
+
 
 	private void startListener() {
 		Log.info(String.format("Starting discovery on multicast group: %s, port: %d\n", DISCOVERY_ADDR.getAddress(), DISCOVERY_ADDR.getPort()));
@@ -132,7 +142,14 @@ class DiscoveryImpl implements Discovery {
 						if (parts.length == 2) {
 							var serviceName = parts[0];
 							var uri = URI.create(parts[1]);
-							uris.computeIfAbsent(serviceName, (k) -> ConcurrentHashMap.newKeySet()).add( uri );
+							uris.computeIfAbsent(serviceName, (k) -> CacheBuilder.newBuilder()
+									.expireAfterWrite(DISCOVERY_ANNOUNCE_PERIOD + 100, TimeUnit.MILLISECONDS) // Adjusted expiration time
+									.build(new CacheLoader<URI, URI>() {
+										@Override
+										public URI load(URI key) throws Exception {
+											return key;
+										}
+									})).put(uri, uri);
 						}
 
 					} catch (Exception x) {
@@ -144,4 +161,5 @@ class DiscoveryImpl implements Discovery {
 			}
 		}).start();
 	}
+
 }
