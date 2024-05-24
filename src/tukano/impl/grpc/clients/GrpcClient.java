@@ -3,18 +3,26 @@ package tukano.impl.grpc.clients;
 import static tukano.api.java.Result.error;
 import static tukano.api.java.Result.ok;
 import static tukano.api.java.Result.ErrorCode.INTERNAL_ERROR;
-import static tukano.api.java.Result.ErrorCode.TIMEOUT;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.security.KeyStore;
 import java.net.URI;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.CertificateException;
 import java.util.function.Supplier;
 
 import io.grpc.Channel;
-import io.grpc.ManagedChannelBuilder;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
-import io.grpc.Status.Code;
+import io.grpc.netty.NettyChannelBuilder;
+import io.grpc.netty.GrpcSslContexts;
+import io.netty.handler.ssl.SslContextBuilder;
 import tukano.api.java.Result;
 import tukano.api.java.Result.ErrorCode;
+
+import javax.net.ssl.TrustManagerFactory;
 
 public class GrpcClient {
 
@@ -23,8 +31,28 @@ public class GrpcClient {
 
 	protected GrpcClient(String serverUrl) {
 		this.serverURI = URI.create(serverUrl);
-		this.channel = ManagedChannelBuilder.forAddress(serverURI.getHost(), serverURI.getPort())
-				.usePlaintext().enableRetry().build();
+		var trustStore = System.getProperty("javax.net.ssl.trustStore");
+		var trustStorePassword = System.getProperty("javax.net.ssl.trustStorePassword");
+
+		Channel tempChannel = null;
+		try{
+			var keystore = KeyStore.getInstance(KeyStore.getDefaultType());
+			try (var in = new FileInputStream(trustStore)) {
+				keystore.load(in, trustStorePassword.toCharArray());
+			}
+
+			var trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+			trustManagerFactory.init(keystore);
+
+			var scb = SslContextBuilder.forClient().trustManager(trustManagerFactory);
+			var sslContext = GrpcSslContexts.configure( scb ).build();
+			tempChannel = NettyChannelBuilder.forAddress(serverURI.getHost(), serverURI.getPort())
+					.sslContext(sslContext).build();
+		}catch (KeyStoreException | IOException | NoSuchAlgorithmException |
+				CertificateException e){
+			e.printStackTrace();
+		}
+		this.channel = tempChannel;
 	}
 	
 	protected <T> Result<T> toJavaResult(Supplier<T> func) {
