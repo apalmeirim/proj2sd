@@ -7,7 +7,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.ext.Provider;
 import tukano.api.Short;
 
-@Path(RestShorts.PATH)
+@Path(RestShortsRep.PATH)
 @Provider
 public interface RestShortsRep {
     String PATH = "/shorts";

@@ -1,6 +1,5 @@
 package tukano.impl.rest.servers;
 
-import java.net.UnknownHostException;
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Logger;
 
