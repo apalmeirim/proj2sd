@@ -134,7 +134,7 @@ public class JavaBlobs implements ExtendedBlobs {
 	}
 	
 	private boolean validBlobId(String blobId) {
-		return Clients.ShortsClients.get().getShort(blobId).isOK();
+		return (Clients.ShortsClients.get().getShort(blobId).isOK() || Clients.RepShortsClients.get().getShort(null,blobId).isOK());
 	}
 
 	private File toFilePath(String blobId) {

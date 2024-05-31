@@ -35,6 +35,6 @@ public abstract class AbstractRestServer extends AbstractServer {
 		
 		Log.info(String.format("%s Server ready @ %s\n",  service, serverURI));
 	}
-	
-	abstract void registerResources( ResourceConfig config );
+
+	abstract void registerResources(ResourceConfig config);
 }

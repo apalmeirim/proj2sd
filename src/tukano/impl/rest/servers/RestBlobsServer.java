@@ -20,8 +20,7 @@ public class RestBlobsServer extends AbstractRestServer {
 	RestBlobsServer(int port) {
 		super( Log, Blobs.NAME, port);
 	}
-	
-	
+
 	@Override
 	void registerResources(ResourceConfig config) {
 		config.register( RestBlobsResource.class ); 
