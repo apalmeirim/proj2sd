@@ -21,6 +21,6 @@ public class Clients {
 
 	public static final ClientFactory<ExtendedShorts> ShortsClients = new ClientFactory<>(Shorts.NAME, RestShortsClient::new, GrpcShortsClient::new);
 
-	public static final ClientFactory<RepShorts> RepShortsClients = new ClientFactory<>(Shorts.NAME, RestRepShortsClient::new, null);
+	public static final ClientFactory<RepShorts> RepShortsClients = new ClientFactory<>(RepShorts.NAME, RestRepShortsClient::new, null);
 
 }

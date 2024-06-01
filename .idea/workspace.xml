@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6c9bd762-eabe-4667-93bd-97e408111904" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+    <list default="true" id="6c9bd762-eabe-4667-93bd-97e408111904" name="Changes" comment="proj2SD 62397 63667">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.core.resources.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.m2e.core.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shorts.props" beforeDir="false" afterPath="$PROJECT_DIR$/shorts.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/java/servers/ShortsReplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/java/servers/ShortsReplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tukano/impl/java/clients/Clients.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/java/clients/Clients.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tukano/impl/java/servers/JavaUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/java/servers/JavaUsers.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +46,36 @@
       <option name="presentableId" value="Default" />
       <updated>1717176695177</updated>
     </task>
+    <task id="LOCAL-00001" summary="proj2SD 62397 63667">
+      <created>1717254629537</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1717254629537</updated>
+    </task>
+    <task id="LOCAL-00002" summary="proj2SD 62397 63667">
+      <created>1717254719721</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1717254719721</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="proj2SD 62397 63667" />
+    <option name="LAST_COMMIT_MESSAGE" value="proj2SD 62397 63667" />
   </component>
 </project>
