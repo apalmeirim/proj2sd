@@ -9,5 +9,8 @@
         <module name="sd2324-tp2" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="sd2324-tp2" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>

@@ -4,178 +4,54 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5637f50c-30d7-4c84-9311-7fc465fa9440" name="Changes" comment="repl.v1">
-      <change afterPath="$PROJECT_DIR$/src/tukano/api/java/RepShorts.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tukano/api/rest/RestShortsRep.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tukano/impl/rest/clients/RestRepShortsClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="6c9bd762-eabe-4667-93bd-97e408111904" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" afterPath="$PROJECT_DIR$/.project" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hibernate.cfg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.core.resources.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.m2e.core.prefs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/shorts.props" beforeDir="false" afterPath="$PROJECT_DIR$/shorts.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/api/Short.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/api/Short.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/api/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/api/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/api/grpc/Blobs.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/api/grpc/Blobs.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/api/grpc/Shorts.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/api/grpc/Shorts.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/api/grpc/Users.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/api/grpc/Users.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/api/java/Blobs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/api/java/Blobs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/api/java/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/api/java/Result.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/api/java/Shorts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/api/java/Shorts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/api/java/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/api/java/Users.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/api/rest/RestBlobs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/api/rest/RestBlobs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/api/rest/RestShorts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/api/rest/RestShorts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/api/rest/RestUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/api/rest/RestUsers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/api/java/ExtendedBlobs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/api/java/ExtendedBlobs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/api/java/ExtendedShorts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/api/java/ExtendedShorts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/api/rest/RestExtendedBlobs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/api/rest/RestExtendedBlobs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/api/rest/RestExtendedShorts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/api/rest/RestExtendedShorts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/discovery/Discovery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/discovery/Discovery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/grpc/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/grpc/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/grpc/clients/GrpcBlobsClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/grpc/clients/GrpcBlobsClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/grpc/clients/GrpcClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/grpc/clients/GrpcClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/grpc/clients/GrpcShortsClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/grpc/clients/GrpcShortsClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/grpc/clients/GrpcUsersClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/grpc/clients/GrpcUsersClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/grpc/common/DataModelAdaptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/grpc/common/DataModelAdaptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/grpc/servers/AbstractGrpcServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/grpc/servers/AbstractGrpcServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/grpc/servers/AbstractGrpcStub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/grpc/servers/AbstractGrpcStub.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/grpc/servers/GrpcBlobsServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/grpc/servers/GrpcBlobsServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/grpc/servers/GrpcBlobsServerStub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/grpc/servers/GrpcBlobsServerStub.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/grpc/servers/GrpcShortsServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/grpc/servers/GrpcShortsServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/grpc/servers/GrpcShortsServerStub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/grpc/servers/GrpcShortsServerStub.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/grpc/servers/GrpcUsersServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/grpc/servers/GrpcUsersServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/grpc/servers/GrpcUsersServerStub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/grpc/servers/GrpcUsersServerStub.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/java/clients/ClientFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/java/clients/ClientFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/java/clients/Clients.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/java/clients/Clients.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/java/servers/AbstractServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/java/servers/AbstractServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/java/servers/JavaBlobs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/java/servers/JavaBlobs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/java/servers/JavaShorts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/java/servers/JavaShorts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/java/servers/data/Following.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/java/servers/data/Following.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/java/servers/data/Likes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/java/servers/data/Likes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/rest/clients/RestBlobsClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/rest/clients/RestBlobsClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/rest/clients/RestClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/rest/clients/RestClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/rest/clients/RestShortsClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/rest/clients/RestShortsClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/rest/clients/RestUsersClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/rest/clients/RestUsersClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/rest/servers/AbstractRestServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/rest/servers/AbstractRestServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/rest/servers/RestBlobsResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/rest/servers/RestBlobsResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/rest/servers/RestBlobsServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/rest/servers/RestBlobsServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/rest/servers/RestResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/rest/servers/RestResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/rest/servers/RestShortsResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/rest/servers/RestShortsResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/rest/servers/RestUsersResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/rest/servers/RestUsersResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/rest/servers/RestUsersServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/rest/servers/RestUsersServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/rest/servers/utils/CustomLoggingFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/rest/servers/utils/CustomLoggingFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/rest/servers/utils/GenericExceptionMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/rest/servers/utils/GenericExceptionMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Args.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Args.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/DB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/DB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Hash.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Hash.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Hex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Hex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Hibernate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Hibernate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/IO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/IO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/IP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/IP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Sleep.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Sleep.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Token.java" afterDir="false" />
-    </list>
-    <list id="74c31a27-3187-4f78-9c75-e6f6aa64362c" name="Changes by dyboo" comment="">
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/java/servers/JavaUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/java/servers/JavaUsers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tukano/impl/rest/servers/RestShortsServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/rest/servers/RestShortsServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tukano/impl/java/servers/ShortsReplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tukano/impl/java/servers/ShortsReplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "apalmeirim"
-  }
-}]]></component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="c0906dc7-5f88-4b8f-9794-c57d63ee5192" />
-        <option name="url" value="https://github.com/apalmeirim/proj2sd.git" />
-      </UrlAndAccount>
-    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 3
-}</component>
-  <component name="ProjectId" id="2h626TGknzeeP4xIe8vV4yvlV1T" />
+  <component name="ProjectId" id="2hF4rnujYJBaIwyHTEkNFSj0RFu" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/sport/OneDrive/Desktop/sd2324-lab10-kafka&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  }
-}</component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="proj2sd" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="proj2sd" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5637f50c-30d7-4c84-9311-7fc465fa9440" name="Changes" comment="" />
-      <created>1716900031716</created>
+      <changelist id="6c9bd762-eabe-4667-93bd-97e408111904" name="Changes" comment="" />
+      <created>1717176695177</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1716900031716</updated>
-      <workItem from="1716900032862" duration="31717000" />
-      <workItem from="1717018677753" duration="1124000" />
-      <workItem from="1717080661458" duration="50791000" />
+      <updated>1717176695177</updated>
     </task>
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="UnknownFeatures">
-    <option featureType="com.intellij.fileTypeFactory" implementationName="*.props" />
   </component>
 </project>

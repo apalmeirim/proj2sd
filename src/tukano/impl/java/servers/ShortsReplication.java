@@ -236,6 +236,10 @@ public class ShortsReplication extends Thread implements RecordProcessor, RepSho
     @Override
     public Result<Short> getShort(Long version, String shortId) {
 
+        if(version != null) {
+            sync.waitForResult(version);
+        }
+
         if(shortId == null) {
             return Result.error(BAD_REQUEST);
         }
@@ -243,9 +247,6 @@ public class ShortsReplication extends Thread implements RecordProcessor, RepSho
         if(!shortFromCache(shortId).isOK())
             return Result.error(NOT_FOUND);
 
-        if(version != null) {
-            sync.waitForResult(version);
-        }
 
         alterBlobURL(discovery.knownUrisOf(Blobs.NAME, 1), shortId);
 
@@ -316,14 +317,15 @@ public class ShortsReplication extends Thread implements RecordProcessor, RepSho
     @Override
     public Result<List<String>> followers(Long version, String userId, String password) {
 
+        if(version != null)
+            sync.waitForResult(version);
+
+
         if(!okUser(userId).isOK())
             return Result.error(NOT_FOUND);
 
         if(!okUser(userId, password).isOK())
             return Result.error(FORBIDDEN);
-
-        if(version != null)
-            sync.waitForResult(version);
 
         var query = format("SELECT f.follower FROM Following f WHERE f.followee = '%s'", userId);
 
@@ -369,6 +371,10 @@ public class ShortsReplication extends Thread implements RecordProcessor, RepSho
     @Override
     public Result<List<String>> likes(Long version, String shortId, String password) {
 
+        if(version != null) {
+            sync.waitForResult(version);
+        }
+
         var s = getShort(version, shortId);
 
         if(!s.isOK())
@@ -377,9 +383,6 @@ public class ShortsReplication extends Thread implements RecordProcessor, RepSho
         if(!okUser(s.value().getOwnerId(), password).isOK())
             return Result.error(FORBIDDEN);
 
-        if(version != null) {
-            sync.waitForResult(version);
-        }
 
         var query = format("SELECT l.userId FROM Likes l WHERE l.shortId = '%s'", shortId);
 
@@ -390,11 +393,12 @@ public class ShortsReplication extends Thread implements RecordProcessor, RepSho
     @Override
     public Result<List<String>> getFeed(Long version, String userId, String password) {
 
-        if(!okUser(userId, password).isOK())
-            return Result.error(FORBIDDEN);
-
         if(version != null)
             sync.waitForResult(version);
+
+
+        if(!okUser(userId, password).isOK())
+            return Result.error(NOT_FOUND);
 
         final var QUERY_FMT = """
 				SELECT s.shortId, s.timestamp FROM Short s WHERE	s.ownerId = '%s'				
@@ -427,8 +431,6 @@ public class ShortsReplication extends Thread implements RecordProcessor, RepSho
 
     private void _deleteAllShorts(String userId, String password) {
 
-        Log.info(format("lolololSCP"));
-
         DB.transaction( (hibernate) -> {
 
             usersCache.invalidate( new Credentials(userId, password) );
@@ -436,7 +438,8 @@ public class ShortsReplication extends Thread implements RecordProcessor, RepSho
             //delete shorts
             var query1 = format("SELECT * FROM Short s WHERE s.ownerId = '%s'", userId);
             hibernate.createNativeQuery(query1, Short.class).list().forEach( s -> {
-                _deleteShort(s.getShortId());
+                shortsCache.invalidate( s.getShortId() );
+                hibernate.remove(s);
             });
 
             //delete follows
@@ -446,7 +449,8 @@ public class ShortsReplication extends Thread implements RecordProcessor, RepSho
             //delete likes
             var query3 = format("SELECT * FROM Likes l WHERE l.ownerId = '%s' OR l.userId = '%s'", userId, userId);
             hibernate.createNativeQuery(query3, Likes.class).list().forEach( l -> {
-                _deleteShort(l.getShortId());
+                shortsCache.invalidate( l.getShortId() );
+                hibernate.remove(l);
             });
         });
     }
